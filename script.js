@@ -41,6 +41,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = Math.floor(Math.random() * 6) + 1;
         movePlayer(result);
     });
+document.addEventListener('DOMContentLoaded', () => {
+    const board = document.getElementById('game-board');
+
+    // 使用加權隨機函數生成1~15的數字
+    function weightedRandom(max) {
+        // 生成一個隨機數字的平方根，使得高數字出現的機率低於低數字
+        return Math.ceil(max * (Math.sqrt(Math.random())));
+    }
+
+    // 初始化遊戲板
+    function initializeBoard() {
+        const numberOfTiles = 25; // 這裡設定你的遊戲板大小
+        for (let i = 0; i < numberOfTiles; i++) {
+            const tile = document.createElement('div');
+            tile.classList.add('game-tile');
+
+        // 最後一格是終點，倒數第二格是毀滅
+        if (i === numberOfTiles - 1) {
+            tile.textContent = '終點';
+            tile.dataset.edge = 'end'; // 使用自定義數據屬性標記終點
+        } else if (i === numberOfTiles - 2) {
+            tile.textContent = '毀滅';
+            tile.dataset.edge = 'ruin'; // 使用自定義數據屬性標記毀滅
+        } else {
+            // 其他格子分配隨機次數
+            const randomCount = weightedRandom(15);
+            tile.textContent = randomCount.toString();
+            tile.dataset.edge = randomCount; // 使用自定義數據屬性儲存次數
+        }
+        board.appendChild(tile);
+    }
 
     initializeBoard();
 });
