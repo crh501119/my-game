@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>遊戲名稱</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  #game-board {
+    position: relative; /* 為了絕對定位玩家標籤 */
+    max-width: 500px; /* 或根據需要調整 */
+    margin: 0 auto;
+  }
+  .game-tile {
+    width: 100px; /* 或根據需要調整 */
+    height: 100px; /* 或根據需要調整 */
+    background-color: #eee;
+    border: 1px solid #333;
+    display: inline-block; /* 或使用 flex/grid 系統 */
+    position: relative; /* 如果需要添加其他元素 */
+  }
+  #player {
+    display: block;
+    width: 90px; /* 略小於 game-tile 以適應邊
+
+界 /
+height: 90px; / 略小於 game-tile 以適應邊界 /
+background-color: #f00; / 玩家顏色，可以根據喜好修改 /
+color: #fff; / 文字顏色 /
+text-align: center; / 確保文字居中 /
+line-height: 90px; / 文字垂直居中 /
+position: absolute; / 用於在遊戲板上移動 */
+}
+</style>
+</head>
+<body>
+<div id="game-board">
+  <!-- 遊戲板塊將在這裡動態生成 -->
+</div>
+<button id="roll-dice">擲骰子</button>
+<script src="script.js"></script>
+</body>
+</html>
